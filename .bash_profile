@@ -3,8 +3,6 @@ PATH="/usr/local/mysql/bin:/usr/local/pear/bin:/opt/local/bin:/opt/local/sbin:/u
 # customize my prompt
 PS1="[\u \W]$ "
 
-# Make textmate my default svn commit editor
-
 ###########
 # GENERAL #
 ###########
@@ -16,8 +14,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ebash='vim ~/.bash_profile'
 alias rbash='source ~/.bash_profile'
-alias audra='ssh kestutis@audra'
-alias audraa='ssh -p24 kestutis@213.197.143.98'
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias subl='open -a "Sublime Text 2"'
