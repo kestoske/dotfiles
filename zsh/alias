@@ -1,0 +1,90 @@
+# GENERAL
+alias home='cd ~'
+alias h='history'
+alias c='clear'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias mysql='/usr/local/mysql/bin/mysql'
+alias mysqladmin='/usr/local/mysql/bin/mysqladmin'
+alias chf='find . -type f -exec chmod 644 {} +'
+alias chd='find . -type d -exec chmod 755 {} +'
+alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+# Show/hide hidden files in Finder
+alias show='defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder'
+alias hide='defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Shortcuts
+alias cds='cd ~/Sites'
+alias cdi='cd /Volumes/kestas'
+alias mini='ssh Kestoske@10.8.1.103'
+
+alias ealias='vim ~/.dotfiles/zsh/alias'
+alias rc='vim ~/.zshrc'
+
+# FUNCTIONS
+
+# Create a new directory and enter it
+function mkd() {
+	mkdir -p "$@" && cd "$@"
+}
+
+# Extracts archived files / mounts disk images
+extract () {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)  tar -jxvf $1                        ;;
+            *.tar.gz)   tar -zxvf $1                        ;;
+            *.bz2)      bunzip2 $1                          ;;
+            *.dmg)      hdiutil mount $1                    ;;
+            *.gz)       gunzip $1                           ;;
+            *.tar)      tar -xvf $1                         ;;
+            *.tbz2)     tar -jxvf $1                        ;;
+            *.tgz)      tar -zxvf $1                        ;;
+            *.zip)      unzip $1                            ;;
+            *.ZIP)      unzip $1                            ;;
+            *.pax)      cat $1 | pax -r                     ;;
+            *.pax.Z)    uncompress $1 --stdout | pax -r     ;;
+            *.Z)        uncompress $1                       ;;
+            *)          echo "'$1' cannot be extracted/mounted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh
+	else
+		local arg=-sh
+	fi
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@"
+	else
+		du $arg .[^.]* *
+	fi
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+	local port="${1:-8000}"
+	sleep 1 && open "http://localhost:${port}/" &
+	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+}
+
+# Start a PHP server from a directory, optionally specifying the port
+# (Requires PHP 5.4.0+.)
+function phpserver() {
+	local port="${1:-4000}"
+	local ip=$(ipconfig getifaddr en1)
+	sleep 1 && open "http://${ip}:${port}/" &
+	php -S "${ip}:${port}"
+}
+

@@ -1,0 +1,13 @@
+# Environment
+
+export EDITOR='vim'
+export PAGER=less
+
+PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin
+
+PATH=$PATH:/usr/local/bin/pear/bin
+PATH=$PATH:/usr/local/mysql/bin # Mysql
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH" # PHP5.5 added using Homebrew
+
+export PATH
