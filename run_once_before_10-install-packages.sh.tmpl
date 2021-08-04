@@ -1,0 +1,13 @@
+{{ define "script-header" -}}
+#!/bin/bash
+
+set -eufo pipefail
+{{ end -}}
+
+{{ if (eq .chezmoi.os "darwin") -}}
+{{   template "script-header" . -}}
+brew install git
+{{ else if (eq .chezmoi.os "linux") -}}
+{{   template "script-header" . -}}
+sudo apt install git
+{{ end -}}
