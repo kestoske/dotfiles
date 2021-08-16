@@ -81,17 +81,42 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
     git
     docker
-    osx
     common-aliases
     pipenv
     virtualenv
+    asdf
+    zoxide
+    fzf
 )
+
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    plugins+=(
+        osx
+    )
+fi
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-eval "$(pyenv init -)"
+{{- if eq .chezmoi.os "darwin" }}
+
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+
+{{- end }}
+
+# Enable Python version management.
+if command -v pyenv >/dev/null;
+    then eval "$(pyenv init -)";
+fi
+
+if command -v pipx >/dev/null; then
+    autoload -U bashcompinit
+    bashcompinit
+    eval "$(register-python-argcomplete pipx)"
+fi
+
 # https://github.com/pyenv/pyenv/issues/1737#issuecomment-738080459
 export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
@@ -102,7 +127,14 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export EDITOR='code'
+# Set preferred editor for local and remote sessions.
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+elif command -v code > /dev/null; then
+    export EDITOR='code';
+else
+    export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

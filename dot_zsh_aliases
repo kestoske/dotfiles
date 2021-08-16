@@ -5,6 +5,13 @@ alias d="docker"
 alias mu="mutagen"
 alias h="helm"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+alias ae="chezmoi edit ~/.zsh_aliases"
+alias ar="source ~/.zsh_aliases"
+alias ze="chezmoi edit ~/.zshrc"
+alias cd="z"
+
+# Zippin
+alias gz="tar -zcvf"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
