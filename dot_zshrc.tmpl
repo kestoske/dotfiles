@@ -149,5 +149,10 @@ if [ -f "$HOME"/.zsh_aliases ]; then
     \. "$HOME"/.zsh_aliases
 fi
 
+# Load cross-compatible Zsh custom code from separate file.
+if [ -f "$HOME"/.zsh_extras ]; then
+    \. "$HOME"/.zsh_extras
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
