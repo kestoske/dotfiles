@@ -111,7 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # Enable Python version management.
 if command -v pyenv >/dev/null; then
     export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    export PATH="$PYENV_ROOT/shims:$PATH"
     eval "$(pyenv init -)";
 fi
 
