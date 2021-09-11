@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+declare -A plugins=(
+    ["fzf-tab"]="https://github.com/Aloxaf/fzf-tab.git"
+    ["notify"]="https://github.com/marzocchi/zsh-notify.git"
+)
+
+for plugin_name in "${!plugins[@]}"; do
+    plugin_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/${plugin_name}"
+    rm -rf ${plugin_dir}
+    mkdir -p ${plugin_dir}
+    git clone --depth=1 ${plugins[$plugin_name]} ${plugin_dir}
+done

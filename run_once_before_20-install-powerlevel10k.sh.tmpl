@@ -1,5 +1,5 @@
 {{ define "install-powerlevel10k" -}}
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -eufo pipefail
 
@@ -8,7 +8,6 @@ destdir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 rm -rf ${destdir}
 mkdir -p ${destdir}
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${destdir}
-# curl -s -L https://github.com/romkatv/powerlevel10k/archive/${version}.tar.gz | tar -C ${destdir} --strip-components=1 -xzf -
 
 {{ end -}}
 {{ if (eq .chezmoi.os "darwin") -}}

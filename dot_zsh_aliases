@@ -9,6 +9,8 @@ alias ae="chezmoi edit ~/.zsh_aliases"
 alias ar="source ~/.zsh_aliases"
 alias ze="chezmoi edit ~/.zshrc"
 alias cd="z"
+alias dd="ddev"
+alias reload="exec $SHELL"
 
 # Zippin
 alias gz="tar -zcvf"
