@@ -82,7 +82,6 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
-    notify # https://github.com/marzocchi/zsh-notify
     git
     docker
     common-aliases
@@ -97,6 +96,7 @@ plugins=(
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     plugins+=(
         osx
+        notify # https://github.com/marzocchi/zsh-notify
     )
 fi
 
@@ -106,11 +106,6 @@ source $ZSH/oh-my-zsh.sh
 
 {{- if eq .chezmoi.os "darwin" }}
 
-{{- end }}
-{{- if eq .chezmoi.os "linux" }}
-
-{{- end }}
-
 # notify
 zstyle ':notify:*' command-complete-timeout 15
 
@@ -119,6 +114,11 @@ zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
 
 zstyle ':notify:*' error-icon "{{ .chezmoi.sourceDir }}/images/error.png"
 zstyle ':notify:*' success-icon "{{ .chezmoi.sourceDir }}/images/success.png"
+
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+
+{{- end }}
 
 # Enable Python version management.
 if command -v pyenv >/dev/null; then
