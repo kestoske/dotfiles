@@ -37,7 +37,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="false"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -105,17 +105,16 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 {{- if eq .chezmoi.os "darwin" }}
-
 # notify
 zstyle ':notify:*' command-complete-timeout 15
 
 zstyle ':notify:*' error-title "Command failed (in #{time_elapsed})"
 zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
 
-zstyle ':notify:*' error-icon "{{ .chezmoi.sourceDir }}/images/error.png"
-zstyle ':notify:*' success-icon "{{ .chezmoi.sourceDir }}/images/success.png"
-
+zstyle ':notify:*' error-icon "{{ .chezmoi.sourceDir }}/.images/error.png"
+zstyle ':notify:*' success-icon "{{ .chezmoi.sourceDir }}/.images/success.png"
 {{- end }}
+
 {{- if eq .chezmoi.os "linux" }}
 
 {{- end }}
@@ -142,11 +141,28 @@ if command -v symfony >/dev/null; then
     complete -o nospace -C "/usr/local/bin/symfony self:autocomplete --zsh" symfony
 fi
 
+# https://github.com/seebi/dircolors-solarized
+if command -v dircolors >/dev/null; then
+    eval "$(dircolors $HOME/.dircolors/dircolors.256dark)"
+fi
+# MacOs support. `gdircolors` comes with homebrew coreutils package
+if command -v gdircolors >/dev/null; then
+    eval "$(gdircolors $HOME/.dircolors/dircolors.256dark)"
+fi
+
 # https://github.com/pyenv/pyenv/issues/1737#issuecomment-738080459
 export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# https://github.com/junegunn/fzf
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+
+# https://github.com/Aloxaf/fzf-tab
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8

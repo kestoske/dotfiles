@@ -6,8 +6,12 @@ set -eufo pipefail
 
 {{ if (eq .chezmoi.os "darwin") -}}
 {{   template "script-header" . -}}
-brew install git
+brew install git coreutils
 {{ else if (eq .chezmoi.os "linux") -}}
 {{   template "script-header" . -}}
 sudo apt install git
 {{ end -}}
+
+if [ ! -d "$HOME/.dircolors" ]; then
+    git clone --depth=1 https://github.com/seebi/dircolors-solarized "$HOME/.dircolors"
+fi
