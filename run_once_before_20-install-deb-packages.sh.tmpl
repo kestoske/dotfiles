@@ -1,0 +1,33 @@
+{{ if (eq .chezmoi.os "linux") -}}
+{{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+ARCH={{ .chezmoi.arch }}
+
+#######################################################################################################################
+# git-delta
+
+DELTA_VERSION=0.8.3
+DELTA_BASENAME="git-delta_${DELTA_VERSION}_${ARCH}"
+
+TEMP_DEB="$(mktemp)" &&
+wget -O "${TEMP_DEB}" "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/${DELTA_BASENAME}.deb" &&
+sudo dpkg -i "${TEMP_DEB}"
+rm -f "${TEMP_DEB}"
+
+#######################################################################################################################
+# duf
+
+DUF_VERSION=0.6.2
+DUF_BASENAME="duf_${DUF_VERSION}_linux_${ARCH}"
+
+TEMP_DEB="$(mktemp)" &&
+wget -O "${TEMP_DEB}" "https://github.com/muesli/duf/releases/download/v${DUF_VERSION}/${DUF_BASENAME}.deb" &&
+sudo dpkg -i "${TEMP_DEB}"
+rm -f "${TEMP_DEB}"
+
+{{   end -}}
+{{ end -}}
+
