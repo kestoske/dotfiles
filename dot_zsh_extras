@@ -1,0 +1,2 @@
+# https://github.com/fnune/base16-fzf
+source "$HOME/.config/base16-fzf/base16-tomorrow-night.config"

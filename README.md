@@ -8,3 +8,5 @@
 ```bash
 sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply kestoske
 ```
+## Notes
+iTerm2 theme: https://github.com/martinlindhe/base16-iterm2

@@ -11,6 +11,7 @@ alias ze="chezmoi edit ~/.zshrc"
 alias cd="z"
 alias dd="ddev"
 alias reload="exec $SHELL"
+alias la="exa -lag"
 
 # Zippin
 alias gz="tar -zcvf"
@@ -20,7 +21,4 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias dips={{`"docker ps -q | xargs -n 1 docker inspect --format '{{ .Name }} {{range .NetworkSettings.Networks}} {{.IPAddress}}{{end}}' | sed 's#^/##';"`}}
 
-{{- if eq .chezmoi.os "darwin" }}
-# Use GNU ls to support https://github.com/seebi/dircolors-solarized
-alias la="gls -lAFh --color=auto"
-{{- end }}
+unalias duf

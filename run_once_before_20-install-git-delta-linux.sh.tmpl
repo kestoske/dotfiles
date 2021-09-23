@@ -1,0 +1,16 @@
+{{ if (eq .chezmoi.os "linux") -}}
+{{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+DELTA_VERSION=0.8.3
+ARCH={{ .chezmoi.arch }}
+BASENAME=git-delta_${DELTA_VERSION}_${ARCH}
+
+TEMP_DEB="$(mktemp)" &&
+wget -O "${TEMP_DEB}" "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/${BASENAME}.deb" &&
+sudo dpkg -i "${TEMP_DEB}"
+rm -f "${TEMP_DEB}"
+{{   end -}}
+{{ end -}}

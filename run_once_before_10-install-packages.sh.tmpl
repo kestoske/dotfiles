@@ -6,12 +6,20 @@ set -eufo pipefail
 
 {{ if (eq .chezmoi.os "darwin") -}}
 {{   template "script-header" . -}}
-brew install git coreutils
+brew install \
+    git \
+    git-delta \
+    less \
+    coreutils \
+    bat \
+    exa
 {{ else if (eq .chezmoi.os "linux") -}}
 {{   template "script-header" . -}}
-sudo apt install git
+sudo apt install \
+    git \
+    bat \
+    exa
+sudo snap install duf-utility
+# due to a name clash with another package
+ln -s /usr/bin/batcat "$HOME/.local/bin/bat"
 {{ end -}}
-
-if [ ! -d "$HOME/.dircolors" ]; then
-    git clone --depth=1 https://github.com/seebi/dircolors-solarized "$HOME/.dircolors"
-fi

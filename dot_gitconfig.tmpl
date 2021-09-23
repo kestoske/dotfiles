@@ -1,0 +1,32 @@
+[core]
+	excludesfile = {{ .chezmoi.homeDir }}/.gitignore
+[user]
+	email = {{ .email | quote }}
+	name = {{ .name | quote }}
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+	features = decorations
+    navigate = true
+	syntax-theme = Solarized (dark)
+	# side-by-side = true
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[delta "decorations"]
+	line-numbers = true
+    commit-decoration-style = blue ol
+    commit-style = raw
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-style = omit
+[diff]
+	tool = bc3
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	trustExitCode = true

@@ -34,10 +34,10 @@ CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="false"
+# DISABLE_UPDATE_PROMPT="false"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -141,13 +141,13 @@ if command -v symfony >/dev/null; then
     complete -o nospace -C "/usr/local/bin/symfony self:autocomplete --zsh" symfony
 fi
 
-# https://github.com/seebi/dircolors-solarized
+# Theme for LS_COLORS. https://www.nordtheme.com/
 if command -v dircolors >/dev/null; then
-    eval "$(dircolors $HOME/.dircolors/dircolors.256dark)"
+    eval "$(dircolors $HOME/.dircolors/dircolors.nord)"
 fi
 # MacOs support. `gdircolors` comes with homebrew coreutils package
 if command -v gdircolors >/dev/null; then
-    eval "$(gdircolors $HOME/.dircolors/dircolors.256dark)"
+    eval "$(gdircolors $HOME/.dircolors/dircolors.nord)"
 fi
 
 # https://github.com/pyenv/pyenv/issues/1737#issuecomment-738080459
@@ -163,6 +163,10 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':fzf-tab:*' switch-group ',' '.'
+# zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window 'right:60%:nohidden:wrap'
+# zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview 'exa -1 --color=always ${realpath//\\ / }'
+# zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+	# fzf-preview 'echo ${(P)word}'
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
