@@ -15,7 +15,10 @@ brew install \
     exa
 {{ else if (eq .chezmoi.os "linux") -}}
 {{   template "script-header" . -}}
-sudo apt install \
+# https://github.com/ogham/exa/issues/783
+sudo add-apt-repository ppa:spvkgn/exa
+sudo apt-get update
+sudo apt-get install -y \
     git \
     bat \
     exa
