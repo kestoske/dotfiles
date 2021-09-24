@@ -1,8 +1,8 @@
 [core]
-	excludesfile = {{ .chezmoi.homeDir }}/.gitignore
+    excludesfile = {{ .chezmoi.homeDir }}/.gitignore
 [user]
-	email = {{ .email | quote }}
-	name = {{ .name | quote }}
+    email = {{ .email | quote }}
+    name = {{ .name | quote }}
 [pager]
     diff = delta
     log = delta
@@ -11,22 +11,28 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [delta]
-	features = decorations
+    features = decorations
     navigate = true
-	syntax-theme = Solarized (dark)
-	# side-by-side = true
+    syntax-theme = Solarized (dark)
+    # side-by-side = true
 [delta "interactive"]
     keep-plus-minus-markers = false
 [delta "decorations"]
-	line-numbers = true
+    line-numbers = true
     commit-decoration-style = blue ol
     commit-style = raw
-	file-style = bold yellow ul
-	file-decoration-style = none
-	hunk-header-style = omit
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-style = omit
+{{ if (eq .chezmoi.os "darwin") -}}
 [diff]
-	tool = bc3
+    tool = bc3
 [merge]
-	tool = bc3
+    tool = bc3
 [mergetool "bc3"]
-	trustExitCode = true
+    trustExitCode = true
+{{ end -}}
+{{ if (eq .chezmoi.os "linux") -}}
+[credential]
+    helper = store
+{{ end -}}
