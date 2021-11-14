@@ -12,16 +12,26 @@ brew install \
     less \
     coreutils \
     bat \
-    exa
+    exa \
+    fzf \
+    zoxide
+
+# To install useful key bindings and fuzzy completion:
+# $(brew --prefix)/opt/fzf/install
+
 {{ else if (eq .chezmoi.os "linux") -}}
 {{   template "script-header" . -}}
 # https://github.com/ogham/exa/issues/783
 sudo add-apt-repository -y ppa:spvkgn/exa
 sudo apt-get -qq update
 sudo apt-get install -y \
+    zsh \
     git \
     bat \
-    exa
+    exa \
+    fzf
+
+curl -sS https://webinstall.dev/zoxide | bash
 
 # due to a name clash with another package
 BAT_BIN="${HOME}/.local/bin/bat"

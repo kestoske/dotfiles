@@ -98,26 +98,13 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
         macos
     )
 fi
-if [[ "$TERM_PROGRAM" = iTerm.app ]]; then
-    plugins+=(
-        notify # https://github.com/marzocchi/zsh-notify
-    )
-fi
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 {{- if eq .chezmoi.os "darwin" }}
-# notify
-zstyle ':notify:*' command-complete-timeout 30
-zstyle ':notify:*' blacklist-regex 'ssh'
 
-zstyle ':notify:*' error-title "Command failed (in #{time_elapsed})"
-zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
-
-zstyle ':notify:*' error-icon "{{ .chezmoi.sourceDir }}/.images/error.png"
-zstyle ':notify:*' success-icon "{{ .chezmoi.sourceDir }}/.images/success.png"
 {{- end }}
 
 {{- if eq .chezmoi.os "linux" }}
