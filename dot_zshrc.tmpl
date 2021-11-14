@@ -95,7 +95,11 @@ plugins=(
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     plugins+=(
-        osx
+        macos
+    )
+fi
+if [[ "$TERM_PROGRAM" = iTerm.app ]]; then
+    plugins+=(
         notify # https://github.com/marzocchi/zsh-notify
     )
 fi
@@ -106,7 +110,8 @@ source $ZSH/oh-my-zsh.sh
 
 {{- if eq .chezmoi.os "darwin" }}
 # notify
-zstyle ':notify:*' command-complete-timeout 15
+zstyle ':notify:*' command-complete-timeout 30
+zstyle ':notify:*' blacklist-regex 'ssh'
 
 zstyle ':notify:*' error-title "Command failed (in #{time_elapsed})"
 zstyle ':notify:*' success-title "Command finished (in #{time_elapsed})"
@@ -164,7 +169,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':fzf-tab:*' switch-group ',' '.'
 # zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window 'right:60%:nohidden:wrap'
-# zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview 'exa -1 --color=always ${realpath//\\ / }'
+# zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview 'exa -1 --color=always ${realpath}'
 # zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
 	# fzf-preview 'echo ${(P)word}'
 
