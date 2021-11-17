@@ -1,2 +1,6 @@
 # https://github.com/fnune/base16-fzf
 source "$HOME/.config/base16-fzf/base16-tomorrow-night.config"
+
+# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory
+[ -d "$HOME/.npm-global/bin" ] && export PATH="$HOME/.npm-global/bin:$PATH"
+
