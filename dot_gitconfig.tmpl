@@ -1,5 +1,8 @@
 [core]
     excludesfile = {{ .chezmoi.homeDir }}/.gitignore
+{{- if eq .chezmoi.os "darwin" }}
+    editor = code --wait
+{{ end -}}
 [user]
     email = {{ .email | quote }}
     name = {{ .name | quote }}

@@ -6,10 +6,12 @@ set -eufo pipefail
 
 {{ if (eq .chezmoi.os "darwin") -}}
 {{   template "script-header" . -}}
+# MacOs provides old version of grep
 brew install \
     git \
     git-delta \
     less \
+    grep \
     coreutils \
     bat \
     exa \

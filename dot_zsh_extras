@@ -4,3 +4,5 @@ source "$HOME/.config/base16-fzf/base16-tomorrow-night.config"
 # https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory
 [ -d "$HOME/.npm-global/bin" ] && export PATH="$HOME/.npm-global/bin:$PATH"
 
+# to use homebrew version of grep
+[ -d "/usr/local/opt/grep/libexec/gnubin" ] && export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
