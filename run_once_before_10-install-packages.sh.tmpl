@@ -16,7 +16,8 @@ brew install \
     bat \
     exa \
     fzf \
-    zoxide
+    zoxide \
+    thefuck
 
 # To install useful key bindings and fuzzy completion:
 # $(brew --prefix)/opt/fzf/install
@@ -32,6 +33,13 @@ sudo apt-get install -y \
     bat \
     exa \
     fzf
+
+# https://github.com/nvbn/thefuck
+sudo apt-get install -y \
+    python3-dev \
+    python3-pip \
+    python3-setuptools
+pip3 install thefuck --user
 
 curl -sS https://webinstall.dev/zoxide | bash
 
