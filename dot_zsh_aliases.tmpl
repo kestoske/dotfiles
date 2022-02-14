@@ -26,6 +26,7 @@ alias dips={{`"docker ps -q | xargs -n 1 docker inspect --format '{{ .Name }} {{
 
 {{- if eq .chezmoi.os "darwin" }}
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias brewlist="brew info --json=v1 --installed | jq 'map(select(any( .installed[]; .installed_on_request == true )) | \"\(.name) - \(.desc)\")'"
 {{- end }}
 
 unalias duf

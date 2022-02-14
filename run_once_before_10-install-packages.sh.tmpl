@@ -6,7 +6,9 @@ set -eufo pipefail
 
 {{ if (eq .chezmoi.os "darwin") -}}
 {{   template "script-header" . -}}
-# MacOs provides old version of grep
+# Notes:
+# - MacOs provides old version of grep
+# - install coreutils in order to use GNU ls (https://github.com/seebi/dircolors-solarized)
 brew install \
     git \
     git-delta \
