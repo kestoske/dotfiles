@@ -2,6 +2,7 @@
 alias cz="chezmoi"
 alias dc="docker-compose"
 alias d="docker"
+alias dpsa={{`"docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"`}}
 alias mu="mutagen"
 alias h="helm"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
