@@ -2,7 +2,7 @@
     excludesfile = {{ .chezmoi.homeDir }}/.gitignore
 {{- if eq .chezmoi.os "darwin" }}
     editor = code --wait
-{{ end -}}
+{{- end }}
 [user]
     email = {{ .email | quote }}
     name = {{ .name | quote }}
@@ -27,7 +27,8 @@
     file-style = bold yellow ul
     file-decoration-style = none
     hunk-header-style = omit
-{{ if (eq .chezmoi.os "linux") -}}
+{{- if (eq .chezmoi.os "linux")}}
 [credential]
     helper = store
-{{ end -}}
+{{- end }}
+
