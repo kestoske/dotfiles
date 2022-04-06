@@ -6,3 +6,9 @@ source "$HOME/.config/base16-fzf/base16-tomorrow-night.config"
 
 # to use homebrew version of grep
 [ -d "/usr/local/opt/grep/libexec/gnubin" ] && export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+# https://gist.github.com/vsouza/77e6b20520d07652ed7d
+if [[ -d "$HOME/golang" ]]; then
+    export GOPATH="$HOME/golang"
+    export PATH="$PATH:$GOPATH/bin"
+fi

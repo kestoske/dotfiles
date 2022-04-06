@@ -7,12 +7,13 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-[ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
-[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
-[ -d $HOME/.composer/vendor/bin ] && export PATH=$HOME/.composer/vendor/bin:$PATH
+[ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/.composer/vendor/bin" ] && export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,8 +73,14 @@ DISABLE_AUTO_UPDATE="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
+HOMEBREW_NO_ENV_HINTS="true"
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh_compdump
+ZSH_CACHE_DIR="$ZSH/cache"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -126,10 +133,6 @@ if command -v pipx >/dev/null; then
     eval "$(register-python-argcomplete pipx)"
 fi
 
-if command -v ddev >/dev/null; then
-    autoload -Uz compinit && compinit
-fi
-
 if command -v symfony >/dev/null; then
     autoload -U +X bashcompinit && bashcompinit
     complete -o nospace -C "/usr/local/bin/symfony self:autocomplete --zsh" symfony
@@ -175,9 +178,9 @@ else
     export EDITOR='vim'
 fi
 
-[ -f $HOME/.zsh_functions ] && . $HOME/.zsh_functions
-[ -f $HOME/.zsh_aliases ] && . $HOME/.zsh_aliases
-[ -f $HOME/.zsh_extras ] && . $HOME/.zsh_extras
+[ -f "$HOME/.zsh_functions" ] && . "$HOME/.zsh_functions"
+[ -f "$HOME/.zsh_aliases" ] && . "$HOME/.zsh_aliases"
+[ -f "$HOME/.zsh_extras" ] && . "$HOME/.zsh_extras"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

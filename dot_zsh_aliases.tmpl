@@ -2,16 +2,15 @@
 alias cz="chezmoi"
 alias dc="docker-compose"
 alias d="docker"
+alias dps={{`"docker ps --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"`}}
 alias dpsa={{`"docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}'"`}}
 alias mu="mutagen"
 alias h="helm"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
-alias ae="chezmoi edit ~/.zsh_aliases"
-alias ar="source ~/.zsh_aliases"
-alias ze="chezmoi edit ~/.zshrc"
+alias zshal="chezmoi edit ~/.zsh_aliases"
+alias zshrc="chezmoi edit ~/.zshrc"
 alias cd="z"
 alias j="jump"
-alias dd="ddev"
 alias reload="exec $SHELL"
 alias la="exa -lag"
 
