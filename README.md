@@ -11,7 +11,7 @@ cat ~/.config/chezmoi/chezmoi.toml
 
 ## Install
 ```bash
-sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply kestoske
+sh -c "$(curl -fsLS git.io/chezmoi)" -- init kestoske --apply --ssh
 ```
 ## Notes
 iTerm2 theme: https://github.com/martinlindhe/base16-iterm2
