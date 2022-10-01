@@ -13,6 +13,7 @@ alias cd="z"
 alias j="jump"
 alias reload="exec $SHELL"
 alias la="exa -lag"
+alias recache="rm ~/.zcompdump* ~/.oh-my-zsh/cache/.zcompdump; compinit"
 
 # Zippin
 alias gz="tar -zcvf"
@@ -29,4 +30,4 @@ alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias brewlist="brew info --json=v1 --installed | jq 'map(select(any( .installed[]; .installed_on_request == true )) | \"\(.name) - \(.desc)\")'"
 {{- end }}
 
-unalias duf
+# unalias duf
