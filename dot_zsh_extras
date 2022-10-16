@@ -12,3 +12,14 @@ if [[ -d "$HOME/golang" ]]; then
     export GOPATH="$HOME/golang"
     export PATH="$PATH:$GOPATH/bin"
 fi
+
+# https://github.com/zsh-users/zsh-autosuggestions/issues/678
+# Up arrow:
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\eOA' history-beginning-search-backward
+# Down arrow:
+bindkey '\e[B' history-beginning-search-forward
+bindkey '\eOB' history-beginning-search-forward
+# The following lines disable live history search:
+zle -A {.,}history-incremental-search-forward
+zle -A {.,}history-incremental-search-backward

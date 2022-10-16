@@ -9,7 +9,7 @@ ARCH={{ .chezmoi.arch }}
 #######################################################################################################################
 # git-delta
 
-DELTA_VERSION=0.9.2
+DELTA_VERSION=0.14.0
 DELTA_BASENAME="git-delta_${DELTA_VERSION}_${ARCH}"
 
 TEMP_DEB="$(mktemp)" &&
@@ -20,7 +20,7 @@ rm -f "${TEMP_DEB}"
 #######################################################################################################################
 # duf
 
-DUF_VERSION=0.6.2
+DUF_VERSION=0.8.1
 DUF_BASENAME="duf_${DUF_VERSION}_linux_${ARCH}"
 
 TEMP_DEB="$(mktemp)" &&

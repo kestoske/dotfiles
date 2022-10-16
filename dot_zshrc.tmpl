@@ -82,6 +82,9 @@ HOMEBREW_NO_ENV_HINTS="true"
 ZSH_CACHE_DIR="$ZSH/cache"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste up-line-or-search down-line-or-search expand-or-complete accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -102,6 +105,8 @@ plugins=(
     jump
     thefuck
     ugit
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
