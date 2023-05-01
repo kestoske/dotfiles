@@ -14,4 +14,4 @@ cat ~/.config/chezmoi/chezmoi.toml
 sh -c "$(curl -fsLS git.io/chezmoi)" -- init kestoske --apply --ssh
 ```
 ## Notes
-iTerm2 theme: https://github.com/martinlindhe/base16-iterm2
+iTerm2 theme: https://github.com/martinlindhe/base16-iterm2 (Tomorrow-night)
