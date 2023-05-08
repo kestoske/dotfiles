@@ -12,7 +12,12 @@
     refreshPeriod = "168h"
 [".oh-my-zsh/custom/plugins/ugit"]
     type = "archive"
-    url = "https://github.com/Bhupesh-V/ugit/archive/refs/tags/v5.4.tar.gz"
+    url = "https://github.com/Bhupesh-V/ugit/archive/refs/tags/v5.5.tar.gz"
+    exact = true
+    stripComponents = 1
+[".oh-my-zsh/custom/plugins/forgit"]
+    type = "archive"
+    url = "https://github.com/wfxr/forgit/archive/refs/tags/23.05.0.tar.gz"
     exact = true
     stripComponents = 1
 [".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
@@ -27,6 +32,6 @@
     stripComponents = 1
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "archive"
-    url = "https://github.com/romkatv/powerlevel10k/archive/v1.16.1.tar.gz"
+    url = "https://github.com/romkatv/powerlevel10k/archive/v1.18.0.tar.gz"
     exact = true
     stripComponents = 1

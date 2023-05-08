@@ -105,9 +105,16 @@ plugins=(
     jump
     thefuck
     ugit
+    forgit
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+if command -v gcloud >/dev/null; then
+    plugins+=(
+        gcloud
+    )
+fi
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
     plugins+=(
