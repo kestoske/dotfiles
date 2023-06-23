@@ -94,6 +94,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 plugins=(
     git
     docker
+    docker-compose
     common-aliases
     pipenv
     virtualenv
@@ -106,6 +107,7 @@ plugins=(
     thefuck
     ugit
     forgit
+    kubectl
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -113,6 +115,11 @@ plugins=(
 if command -v gcloud >/dev/null; then
     plugins+=(
         gcloud
+    )
+fi
+if command -v fnm >/dev/null; then
+    plugins+=(
+        fnm
     )
 fi
 
