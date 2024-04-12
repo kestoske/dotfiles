@@ -106,7 +106,6 @@ plugins=(
     jump
     thefuck
     ugit
-    forgit
     kubectl
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -198,6 +197,8 @@ elif command -v code > /dev/null; then
 else
     export EDITOR='vim'
 fi
+
+[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
 
 [ -f "$HOME/.zsh_functions" ] && . "$HOME/.zsh_functions"
 [ -f "$HOME/.zsh_aliases" ] && . "$HOME/.zsh_aliases"
