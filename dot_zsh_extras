@@ -6,13 +6,18 @@ source "$HOME/.config/base16-fzf/base16-tomorrow-night.config"
 
 [ -d "$HOME/.yarn/bin" ] && export PATH="$HOME/.yarn/bin:$PATH"
 
+if [[ -d "$HOME/Library/pnpm" ]]; then
+    export PNPM_HOME="$HOME/Library/pnpm"
+    export PATH="$PNPM_HOME:$PATH"
+fi
+
+
 # newer make version
 [ -d "/opt/homebrew/opt/make/libexec/gnubin" ] && export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 
 # for mysql client
 [ -d "/opt/homebrew/opt/mysql@5.7/bin" ] && export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 
-# to use homebrew version of grep
 [ -d "/usr/local/opt/grep/libexec/gnubin" ] && export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # https://gist.github.com/vsouza/77e6b20520d07652ed7d
