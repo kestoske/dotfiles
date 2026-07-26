@@ -14,26 +14,10 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -d "$HOME/.yarn/bin" ] && export PATH="$HOME/.yarn/bin:$PATH"
 
-# Added by Spectra
-if [[ -z ${path[(r)$HOME/.local/bin]} ]]; then
-  path=("$HOME/.local/bin" $path)
-fi
-
-# pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-
-[ -d "$HOME/.bin" ] && export PATH="$HOME/.bin:$PATH"
-
-[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+[ -d "$PNPM_HOME" ] && PATH="$PNPM_HOME/bin:$PATH"
 
 [ -d "$HOME/.opencode/bin" ] && export PATH="$HOME/.opencode/bin:$PATH"
-
-[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # newer make version
 [ -d "/opt/homebrew/opt/make/libexec/gnubin" ] && export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
