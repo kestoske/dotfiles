@@ -46,7 +46,7 @@ DISABLE_AUTO_UPDATE="true"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -95,17 +95,17 @@ ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(
     git
-    docker
-    docker-compose
+    z
+    #docker
+    #docker-compose
     common-aliases
-    pipenv
-    virtualenv
+    #pipenv
+    #virtualenv
     asdf
     zoxide
     colored-man-pages
     fzf
     fzf-tab
-    jump
     thefuck
     ugit
     kubectl
@@ -205,6 +205,7 @@ fi
 [ -f "$HOME/.zsh_functions" ] && . "$HOME/.zsh_functions"
 [ -f "$HOME/.zsh_aliases" ] && . "$HOME/.zsh_aliases"
 [ -f "$HOME/.zsh_extras" ] && . "$HOME/.zsh_extras"
+[ -f "$HOME/.zsh_secrets" ] && . "$HOME/.zsh_secrets"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
